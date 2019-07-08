@@ -39,8 +39,8 @@ new.image<-data.frame(patient,new.image)
 
 res<-merge(cli,new.image,by="patient")
 
-low<-floor(0.2*dim(res)[1])  #20th percentiles 向下取整
-high<-ceiling(0.8*dim(res)[1])#80th percentiles 向下取整
+low<-floor(0.2*dim(res)[1]) 
+high<-ceiling(0.8*dim(res)[1])
 
 
 ##image.analysis<-c("Area5","DistMin1","Minor5","DistMean1", "DistMax5")
