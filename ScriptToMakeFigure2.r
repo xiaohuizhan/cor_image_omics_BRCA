@@ -34,14 +34,12 @@ length(missdata) ##4
 rppa<-rppa[-missdata,]
 dim(rppa) ##222  74
 
-##基于mice包的缺失值填补方法:
+
 library("mice")
-tempData <- mice(rppa,m=5,meth='pmm') ##插补缺失数据,通过链式方程生成多元插补
- ## 1. m=5指的是插补数据集的数量，5是默认值 
- ## 2. meth='pmm'(预测均值匹配（Predictive mean matching ）)指的是插补方法。
+tempData <- mice(rppa,m=5,meth='pmm') 
 summary(tempData) 
-res.rppa <- complete(tempData) ##返回完整的数据集
-anyNA(res.rppa) ##判断还有没有缺失值，如果没有，结果返回FLASE
+res.rppa <- complete(tempData) 
+anyNA(res.rppa) 
 rownames(res.rppa)<-rownames(rppa)
 colnames(res.rppa)[1]<-"ID"
 write.table(res.rppa,"rppa.txt",quote=F,sep="\t")
